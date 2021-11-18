@@ -4,9 +4,12 @@ use App\Http\Controllers\Dashboard\AttendanceController;
 use App\Http\Controllers\Dashboard\FeesController;
 use App\Http\Controllers\Dashboard\FeesInvoiseController;
 use App\Http\Controllers\Dashboard\GraduationController;
+use App\Http\Controllers\Dashboard\LibraryController;
+use App\Http\Controllers\Dashboard\OnlineClassesController;
 use App\Http\Controllers\Dashboard\PaymentController;
 use App\Http\Controllers\Dashboard\ProcessingFeeController;
 use App\Http\Controllers\Dashboard\PromotionController;
+use App\Http\Controllers\Dashboard\QuestionController;
 use App\Http\Controllers\Dashboard\QuizzeController;
 use App\Http\Controllers\Dashboard\ReceiptStudentsController;
 use App\Http\Controllers\Dashboard\StudentController;
@@ -18,6 +21,7 @@ use App\Http\Controllers\Dashboard\GradesController;
 use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\MyParentController;
 use App\Http\Controllers\Dashboard\SectionController;
+use App\Http\Controllers\Dashboard\SettingController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -247,6 +251,58 @@ Route::group(
                Route::get('/edit/{id}',[QuizzeController::class,'edit'])->name('admin.quizzes.edit');
                Route::post('/update',[QuizzeController::class,'update'])->name('admin.quizzes.update');
                Route::post('/delete',[QuizzeController::class,'destroy'])->name('admin.quizzes.delete');
+
+         });
+
+           Route::group(['prefix'=>'questions'],function (){
+
+               Route::get('/{id}',[QuestionController::class,'index'])->name('admin.questions');
+               Route::get('/create/{id}',[QuestionController::class,'create'])->name('aaa');
+               Route::post('/store',[QuestionController::class,'store'])->name('admin.questions.store');
+               Route::get('/edit/{id}',[QuestionController::class,'edit'])->name('admin.questions.edit');
+               Route::post('/update',[QuestionController::class,'update'])->name('admin.questions.update');
+               Route::post('/delete',[QuestionController::class,'destroy'])->name('admin.questions.delete');
+
+         });
+
+           Route::group(['prefix'=>'onlineClasses'],function (){
+
+               Route::get('/',[OnlineClassesController::class,'index'])->name('admin.onlineClasses');
+               Route::get('/create',[OnlineClassesController::class,'create'])->name('admin.onlineClasses.create');
+               Route::post('/store',[OnlineClassesController::class,'store'])->name('admin.onlineClasses.store');
+//               Route::get('/edit/{id}',[OnlineClassesController::class,'edit'])->name('admin.questions.edit');
+//               Route::post('/update',[OnlineClassesController::class,'update'])->name('admin.questions.update');
+//               Route::post('/delete',[OnlineClassesController::class,'destroy'])->name('admin.questions.delete');
+
+
+               Route::get('/indirect',[OnlineClassesController::class,'indirectCreate'])->name('admin.onlineClasses.indirectCreate');
+               Route::post('/indirect',[OnlineClassesController::class,'indirectStore'])->name('admin.onlineClasses.indirectStore');
+               Route::post('/indirectDelete',[OnlineClassesController::class,'destroy'])->name('admin.onlineClasses.indirectDelete');
+
+         });
+
+
+           Route::group(['prefix'=>'library'],function (){
+
+               Route::get('/',[LibraryController::class,'index'])->name('admin.library');
+               Route::get('/create',[LibraryController::class,'create'])->name('admin.library.create');
+               Route::post('/store',[LibraryController::class,'store'])->name('admin.library.store');
+               Route::get('/download/{filename}',[LibraryController::class,'download'])->name('admin.library.download');
+               Route::get('/edit/{id}',[LibraryController::class,'edit'])->name('admin.library.edit');
+               Route::post('/update',[LibraryController::class,'update'])->name('admin.library.update');
+               Route::post('/delete',[LibraryController::class,'destroy'])->name('admin.library.delete');
+
+         });
+
+           Route::group(['prefix'=>'settings'],function (){
+
+               Route::get('/',[SettingController::class,'index'])->name('admin.settings');
+            //    Route::get('/create',[LibraryController::class,'create'])->name('admin.library.create');
+            //    Route::post('/store',[LibraryController::class,'store'])->name('admin.library.store');
+            //    Route::get('/download/{filename}',[LibraryController::class,'download'])->name('admin.library.download');
+            //    Route::get('/edit/{id}',[LibraryController::class,'edit'])->name('admin.library.edit');
+               Route::post('/update',[SettingController::class,'update'])->name('admin.settings.update');
+            //    Route::post('/delete',[LibraryController::class,'destroy'])->name('admin.library.delete');
 
          });
 

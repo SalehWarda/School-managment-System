@@ -22,6 +22,7 @@ return [
     'Subjects_List'        => 'قائمة المواد الدراسية',
     'Quizzes'       => 'الإختبارات',
     'Quizzes_List'       => 'قائمة الإختبارات',
+    'Questions_List'       => 'قائمة  الأسئلة',
     'Fees'       => 'الحسابات',
 
 

@@ -8,14 +8,10 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getLogin()
     {
         //
+
         return view('pages.auth.login');
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuizzesTable extends Migration
+class CreateLibrariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateQuizzesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('libraries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->string('title');
+            $table->string('file_name');
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('class_rooms')->onDelete('cascade');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('libraries');
     }
 }

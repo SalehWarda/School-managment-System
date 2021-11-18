@@ -215,25 +215,61 @@
 
                 </ul>
             </li>
-            <!-- menu item maps-->
+
+            <!-- library-->
             <li>
-                <a href="maps.html"><i class="ti-location-pin"></i><span class="right-nav-text">maps</span>
-                    <span class="badge badge-pill badge-success float-right mt-1">06</span></a>
-            </li>
-            <!-- menu item timeline-->
-            <li>
-                <a href="timeline.html"><i class="ti-panel"></i><span class="right-nav-text">timeline</span>
-                </a>
-            </li>
-            <!-- menu item Multi level-->
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#multi-level">
-                    <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">Multi level Menu</span>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#library">
+                    <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">المكتبة</span>
                     </div>
                     <div class="pull-right"><i class="ti-plus"></i></div>
                     <div class="clearfix"></div>
                 </a>
-                <ul id="multi-level" class="collapse" data-parent="#sidebarnav">
+                <ul id="library" class="collapse" data-parent="#sidebarnav">
+                    <li>
+                        <a href="{{route('admin.library')}}" >قائمة الكتب</a>
+
+                    </li>
+                </ul>
+            </li>
+
+            <!-- ZoomOnline-->
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ZoomOnline">
+                    <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">حصص أونلاين</span>
+                    </div>
+                    <div class="pull-right"><i class="ti-plus"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul id="ZoomOnline" class="collapse" data-parent="#sidebarnav">
+                    <li><a href="{{route('admin.onlineClasses')}}">حصص اونلاين مع زووم</a></li>
+
+                </ul>
+
+
+
+
+            </li>
+
+
+            <!-- Settings-->
+            <li>
+                <a href="{{route('admin.settings')}}" >
+                    <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">الإعدادت</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+
+            </li>
+
+            <!-- Users-->
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users">
+                    <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">المستخدمين</span>
+                    </div>
+                    <div class="pull-right"><i class="ti-plus"></i></div>
+                    <div class="clearfix"></div>
+                </a>
+                <ul id="Users" class="collapse" data-parent="#sidebarnav">
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth">Level item
                             1

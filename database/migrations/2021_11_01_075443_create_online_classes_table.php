@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuizzesTable extends Migration
+class CreateOnlineClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,21 @@ class CreateQuizzesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('online_classes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->boolean('integration');
+            $table->foreignId('user_id')->references('id')->on('admins')->onDelete('cascade');
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('class_rooms')->onDelete('cascade');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
+
+            $table->string('meeting_id');
+            $table->string('topic');
+            $table->dateTime('start_at');
+            $table->integer('duration')->comment('minutes');
+            $table->string('password')->comment('meeting password');
+            $table->text('start_url');
+            $table->text('join_url');
             $table->timestamps();
         });
     }
@@ -32,6 +39,6 @@ class CreateQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('online_classes');
     }
 }

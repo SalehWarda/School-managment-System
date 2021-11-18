@@ -73,13 +73,20 @@
                                         <td>{{$quizze->classroom->name_class}}</td>
                                         <td>{{$quizze->section->name}}</td>
                                         <td>
-                                            <a href="{{route('admin.quizzes.edit',$quizze->id)}}"
-                                               class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
-                                                    class="fa fa-edit"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm"
-                                                    data-toggle="modal"
-                                                    data-target="#delete_exam{{ $quizze->id }}"><i
-                                                    class="fa fa-trash"></i></button>
+
+
+                                            <div class="dropdown show">
+                                                <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    العمليات
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item" href="{{route('admin.questions',$quizze->id)}}"><i style="color: #ffc107" class="fa fa-eye "></i>&nbsp;  عرض الأسئلة</a>
+                                                    <a class="dropdown-item" href="{{route('admin.quizzes.edit',$quizze->id)}}"><i style="color:green" class="fa fa-edit"></i>&nbsp;  تعديل الأختبار</a>
+                                                    <a class="dropdown-item" data-target="#delete_exam{{ $quizze->id }}" data-toggle="modal" href="{{route('admin.quizzes.edit',$quizze->id)}}"><i style="color: red" class="fa fa-trash"></i>&nbsp;  حذف الأختبار  </a>
+                                                </div>
+                                            </div>
+
+
                                         </td>
                                     </tr>
 

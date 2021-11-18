@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ReligionsDatabaseSeeder::class);
         $this->call(GenderDatabaseSeeder::class);
         $this->call(SpecializationDatabaseSeeder::class);
+        $this->call(SettingSeederDatabase::class);
 
 
     }

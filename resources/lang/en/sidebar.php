@@ -30,6 +30,7 @@ return [
 
     'Quizzes'       => 'Quizzes',
     'Quizzes_List'       => 'Quizzes List',
+    'Questions_List'       => 'Questions List',
 
     'Fees'       => 'Fees',
 
