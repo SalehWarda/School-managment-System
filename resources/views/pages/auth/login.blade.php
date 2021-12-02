@@ -18,7 +18,7 @@
 
             <div class="col-lg-4 col-md-6 bg-white">
                 <div class="login-fancy pb-40 clearfix">
-                    <h3 class="mb-30">Sign In </h3>
+                    <h3 class="mb-30">Sign In {{ $type }}</h3>
 
                     @include('includes.alerts.alert')
 
@@ -26,6 +26,7 @@
 
                         @csrf
 
+                        <input type="hidden" name="type" value="{{$type}}">
                     <div class="section-field mb-20">
                         <label class="mb-10" for="name">Email* </label>
                         <input id="email" class="web form-control" type="email" placeholder="Email" name="email">

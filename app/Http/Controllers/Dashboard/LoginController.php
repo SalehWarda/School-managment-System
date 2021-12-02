@@ -8,12 +8,20 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function getLogin()
+    public function index()
     {
         //
 
-        return view('pages.auth.login');
+        return view('pages.auth.selection');
     }
+
+
+//    public function getLogin()
+//    {
+//        //
+//
+//        return view('pages.auth.login');
+//    }
 
 
 
@@ -25,16 +33,39 @@ class LoginController extends Controller
 
         // 2- Check in DB
 
-             $remember_me = $request->has('remember_me')? true  : false;
-             if (auth()->guard('admin')->attempt(['email'=>$request->input('email'),'password'=>$request->input('password')],$remember_me)) {
+        if ($request->type == "admin"){
 
-                 return redirect()->route('admin.dashboard');
-             }
-             return redirect()->back()->with([
-                 'message' => 'There is something wrong with the Data',
-                 'alert-type' => 'danger'
+            if (auth()->guard('admin')->attempt(['email'=>$request->input('email'),'password'=>$request->input('password')])) {
 
-             ]);
+                return redirect()->route('admin.dashboard');
+            }else{
+
+                return redirect()->back()->with([
+                    'message' => 'There is something wrong with the Data',
+                    'alert-type' => 'danger'
+
+                ]);
+            }
+
+        }
+
+        if ($request->type == "teacher"){
+
+            if (auth()->guard('teacher')->attempt(['email'=>$request->input('email'),'password'=>$request->input('password')])) {
+
+                return redirect()->route('admin.teachers');
+            }else{
+
+                return redirect()->back()->with([
+                    'message' => 'There is something wrong with the Data',
+                    'alert-type' => 'danger'
+
+                ]);
+            }
+
+        }
+
+
 
     }
 
@@ -44,12 +75,21 @@ class LoginController extends Controller
         $gaurd = $this->getGaurd();
         $gaurd->logout();
 
-        return redirect()->route('admin.getLogin');
+        return redirect()->route('admin.selection');
     }
 
     private function getGaurd()
     {
         return auth('admin');
+    }
+
+
+    public function loginForm($type)
+    {
+
+        return view('pages.auth.login',compact('type'));
+
+
     }
 
 }
